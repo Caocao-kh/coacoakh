@@ -1,0 +1,102 @@
+
+<div class="relative w-full h-96 overflow-hidden mt-20">
+  <!-- Background Gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 opacity-50 blur-sm"></div>
+
+  <!-- Slider Content -->
+  <div class="absolute inset-0 flex items-center justify-center text-center text-white">
+    <div>
+      <h1 class="text-5xl font-extrabold tracking-tight sm:text-6xl drop-shadow-lg">
+        ស្វាគមន៍មកកាន់ <span class="text-yellow-300">L-Store</span>!
+      </h1>
+      <p class="mt-4 text-xl font-light hidden sm:block">ការជ្រើសរើសដ៏ល្អបំផុតសម្រាប់អ្នក</p>
+    </div>
+  </div>
+
+  <!-- Auto-Scrolling Effect (CSS Animation) -->
+  <div class="absolute inset- animate-slide">
+    <!-- Add your images here or use different sections to scroll automatically -->
+    <div class="flex w-full h-full">
+      <div class="flex-shrink-0 w-full bg-cover h-full bg-center" style="background-image: url('https://i.pinimg.com/1200x/64/c2/4b/64c24b79854932ede4a4fef035ee876b.jpg');"></div>
+      <div class="flex-shrink-0 w-full bg-cover h-full bg-center" style="background-image: url('https://i.pinimg.com/736x/b2/2f/56/b22f56800928c97d35d1a8d860b35616.jpg');"></div>
+      <div class="flex-shrink-0 w-full bg-cover h-full bg-center" style="background-image: url('https://i.pinimg.com/736x/fd/5f/a3/fd5fa32e62766a8adc6ccdf2712cd2cb.jpg');"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Gradient Divider -->
+<div class="h-1 w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 my-6"></div>
+
+<!-- Banner Section -->
+<div class="bg-indigo-700 text-white text-center py-8">
+  <h2 class="text-2xl font-semibold">Special Offer! Get 20% Off on All Products</h2>
+  <p class="mt-4">Limited time only. Don't miss out on this amazing deal!</p>
+  <button class="mt-6 px-6 py-2 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-600 transition">Shop Now</button>
+</div>
+
+<!-- Product Cards Section -->
+<section class="max-w-screen-xl mx-auto py-16 px-6 bg-gray-50">
+  <h2 class="text-4xl font-bold text-center text-gray-800 mb-10">Accessories Iphone</h2>
+
+  <div class="h-96 overflow-x-auto scroll-smooth">
+    <div class="flex gap-8">
+      <div *ngFor="let product of products" class="group transform transition duration-300 hover:scale-105 min-w-max">
+        <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-md overflow-hidden border border-gray-200">
+          <img class="w-full h-56 object-cover group-hover:brightness-90 transition" src="{{product.imageUrl}}" alt="{{product.name}}">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800 truncate">{{product.name}}</h3>
+            <p class="text-gray-500 mt-1 text-sm line-clamp-2">{{product.description}}</p>
+            <div class="mt-4 flex justify-between items-center">
+              <span class="text-xl font-bold text-indigo-600">${{product.price}}</span>
+              <button 
+                class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition"
+                (click)="onAdd(product)">
+                បញ្ជាទិញ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Electronics Section -->
+<section class="max-w-screen-xl mx-auto py-16 px-6 bg-white">
+  <h2 class="text-4xl font-bold text-center text-gray-800 mb-10">គ្រឿងអេឡិចត្រូនិក</h2>
+
+  <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div *ngFor="let product of apiProducts" class="group transform transition duration-300 hover:scale-105">
+      <div class="bg-white/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden border border-gray-200">
+        <img class="w-full h-56 object-cover group-hover:brightness-90 transition" src="{{product.imageUrl}}" alt="{{product.name}}">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-800 truncate">{{product.name}}</h3>
+          <p class="text-gray-500 mt-1 text-sm line-clamp-2">{{product.description}}</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xl font-bold text-indigo-600">${{product.price}}</span>
+            <button 
+              class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition"
+              (click)="onAdd(product)">
+              បញ្ជាទិញ
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add CSS for Auto-scrolling Animation -->
+<style>
+  @keyframes slide {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(-100%); }
+    66% { transform: translateX(-200%); }
+    100% { transform: translateX(0); }
+  }
+
+  .animate-slide .flex {
+    animation: slide 18s ease-in-out infinite;
+  }
+</style>
+

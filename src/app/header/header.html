@@ -1,0 +1,56 @@
+<nav class="bg-white/80 backdrop-blur-md shadow-md fixed top-0 w-full z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <span class="text-2xl font-extrabold text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">L-Store</span>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8 items-center">
+        <a routerLink="/" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+        <a routerLink="/about" class="text-gray-700 hover:text-blue-600 transition">About</a>
+        <a routerLink="/contact" class="text-gray-700 hover:text-blue-600 transition">Contact</a>
+
+        <!-- Cart Button -->
+        <a routerLink="/cart">
+          <button class="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 3h1.386a.75.75 0 01.707.517L5.91 7.5h12.18a.75.75 0 01.728.939l-1.5 6a.75.75 0 01-.724.561H7.406a.75.75 0 01-.728-.561L4.5 4.5H2.25m16.5 13.5a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0zM8.25 18a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0z" />
+            </svg>
+            Cart <span class="ml-1 text-sm font-semibold text-red-300">({{ cardList.length }})</span>
+          </button>
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <div class="md:hidden flex items-center space-x-2">
+        <!-- Cart Button -->
+        <a routerLink="/cart">
+          <button class="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 3h1.386a.75.75 0 01.707.517L5.91 7.5h12.18a.75.75 0 01.728.939l-1.5 6a.75.75 0 01-.724.561H7.406a.75.75 0 01-.728-.561L4.5 4.5H2.25m16.5 13.5a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0zM8.25 18a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0z" />
+            </svg>
+          </button>
+        </a>
+
+        <!-- Toggle Button -->
+        <button (click)="toggleMenu()" class="text-gray-700 text-2xl focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu (Dropdown) -->
+  <div *ngIf="isMenuOpen" class="md:hidden px-4 pb-4 pt-2 bg-white/90 backdrop-blur-md shadow-inner transition-all duration-300">
+    <a routerLink="/" class="block py-2 text-gray-700 hover:text-blue-600">Home</a>
+    <a routerLink="/about" class="block py-2 text-gray-700 hover:text-blue-600">About</a>
+    <a routerLink="/contact" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+    <button class="w-full mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Login</button>
+  </div>
+</nav>

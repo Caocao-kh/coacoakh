@@ -1,0 +1,59 @@
+<div class="container mx-auto my-10 px-4 max-w-4xl min-h-[80vh]">
+  <!-- Cart Items -->
+  <div class="space-y-6">
+    <!-- Item Loop -->
+    @for(cart of cartList; track cart.id){
+      <div class="bg-white rounded-2xl shadow-lg p-5 flex flex-col md:flex-row items-center gap-6 hover:shadow-2xl transition">
+        
+        <!-- Image -->
+        <img src="{{cart.imageUrl}}" alt="{{cart.name}}" class="w-28 h-28 object-cover rounded-xl">
+
+        <!-- Info -->
+        <div class="flex-1 w-full">
+          <h3 class="text-lg font-bold">{{cart.name}}</h3>
+          <p class="text-gray-600 mt-1">Price: <span class="font-semibold">{{cart.price | currency}}</span></p>
+          
+          <!-- Quantity -->
+          <div class="flex items-center mt-3 gap-3">
+            <label class="text-sm text-gray-500">Qty:</label>
+            <input type="number" value="{{cart.qty}}" min="1" 
+              (change)="handleQty(cart.id, $event)"
+              class="w-20 border rounded-lg px-2 py-1 text-center">
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-col items-end gap-3">
+          <p class="text-lg font-semibold text-gray-800">{{cart.qty * cart.price | currency}}</p>
+          <button class="text-red-500 hover:text-red-700 font-medium flex items-center gap-1"
+                  (click)="handleDelete(cart.id)">
+            🗑 Remove
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Summary -->
+  <div class="bg-white rounded-2xl shadow-lg mt-10 p-6">
+    <!-- Shipping -->
+    <div class="flex justify-between items-center border-b pb-4">
+      <input type="text" placeholder="Enter ZIP Code" 
+             class="border rounded-lg px-3 py-2 w-1/2 focus:outline-none focus:ring-2 focus:ring-black">
+      <button class="text-black font-medium hover:underline">Shipping →</button>
+    </div>
+
+    <!-- Total -->
+    <div class="mt-6 flex justify-between items-center text-xl font-bold">
+      <p>Total</p>
+      <p>{{totalAmount | currency}}</p>
+    </div>
+
+    <!-- Checkout -->
+    <div class="mt-6">
+      <button class="w-full bg-black text-white py-4 rounded-full text-lg font-semibold hover:bg-gray-900 transition">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+</div>
